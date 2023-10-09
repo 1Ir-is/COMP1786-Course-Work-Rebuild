@@ -1,12 +1,19 @@
 package com.example.bottomnavigation;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.example.bottomnavigation.databinding.FragmentAddBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +21,7 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class AddFragment extends Fragment {
+    private FragmentAddBinding binding;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +67,45 @@ public class AddFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add, container, false);
+        binding = FragmentAddBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+
+        // Find the TextViews by their IDs
+        TextView nameHikeLabel = view.findViewById(R.id.nameHike);
+        TextView nameLocationLabel = view.findViewById(R.id.nameLocation);
+        TextView dateHikeLabel = view.findViewById(R.id.dateHike);
+        TextView parkingLabel = view.findViewById(R.id.textViewParking);
+        TextView lengthHikeLabel = view.findViewById(R.id.lengthHike);
+        TextView levelHikeLabel = view.findViewById(R.id.levelHike);
+
+        // Create a red asterisk (*)
+        String redAsterisk = " *";
+
+        // Create a SpannableString with the label text and the red asterisk
+        SpannableString nameHikeSpan = new SpannableString(nameHikeLabel.getText() + redAsterisk);
+        SpannableString nameLocationSpan = new SpannableString(nameLocationLabel.getText() + redAsterisk);
+        SpannableString dateHikeSpan = new SpannableString(dateHikeLabel.getText() + redAsterisk);
+        SpannableString parkingSpan = new SpannableString(parkingLabel.getText() + redAsterisk);
+        SpannableString lengthHikeSpan = new SpannableString(lengthHikeLabel.getText() + redAsterisk);
+        SpannableString levelHikeSpan = new SpannableString(levelHikeLabel.getText() + redAsterisk);
+
+        // Set the text color of the red asterisk to red
+        int redColor = Color.RED;
+        nameHikeSpan.setSpan(new ForegroundColorSpan(redColor), nameHikeSpan.length() - 1, nameHikeSpan.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        nameLocationSpan.setSpan(new ForegroundColorSpan(redColor), nameLocationSpan.length() - 1, nameLocationSpan.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        dateHikeSpan.setSpan(new ForegroundColorSpan(redColor), dateHikeSpan.length() - 1, dateHikeSpan.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        parkingSpan.setSpan(new ForegroundColorSpan(redColor), parkingSpan.length() - 1, parkingSpan.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        lengthHikeSpan.setSpan(new ForegroundColorSpan(redColor), lengthHikeSpan.length() - 1, lengthHikeSpan.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        levelHikeSpan.setSpan(new ForegroundColorSpan(redColor), levelHikeSpan.length() - 1, levelHikeSpan.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        // Set the SpannableStrings as the text for the TextViews
+        nameHikeLabel.setText(nameHikeSpan);
+        nameLocationLabel.setText(nameLocationSpan);
+        dateHikeLabel.setText(dateHikeSpan);
+        parkingLabel.setText(parkingSpan);
+        lengthHikeLabel.setText(lengthHikeSpan);
+        levelHikeLabel.setText(levelHikeSpan);
+
+        return view;
     }
 }
