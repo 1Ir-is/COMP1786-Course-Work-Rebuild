@@ -1,5 +1,6 @@
 package com.example.bottomnavigation;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -11,6 +12,10 @@ import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.bottomnavigation.databinding.FragmentAddBinding;
@@ -53,6 +58,7 @@ public class AddFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -105,6 +111,36 @@ public class AddFragment extends Fragment {
         parkingLabel.setText(parkingSpan);
         lengthHikeLabel.setText(lengthHikeSpan);
         levelHikeLabel.setText(levelHikeSpan);
+
+        Button addButton = view.findViewById(R.id.addButton);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get user-input data
+                String name = ((EditText) view.findViewById(R.id.nameHikeText)).getText().toString();
+                String location = ((EditText) view.findViewById(R.id.locationText)).getText().toString();
+                String date = ((EditText) view.findViewById(R.id.dateHikeText)).getText().toString();
+                String parkingAvailable = ((RadioButton) view.findViewById(R.id.radioButtonYes)).isChecked() ? "Yes" : "No";
+                String lengthHike = ((EditText) view.findViewById(R.id.lengthHikeText)).getText().toString();
+                String difficultyLevel = ((Spinner) view.findViewById(R.id.levelHikeSpinner)).getSelectedItem().toString();
+                String description = ((EditText) view.findViewById(R.id.descriptionHikeText)).getText().toString();
+
+                // Create an intent to start the ConfirmationActivity
+                Intent intent = new Intent(getActivity(), ConfirmationActivity.class);
+
+                // Pass user-input data as extras to the intent
+                intent.putExtra("name", name);
+                intent.putExtra("location", location);
+                intent.putExtra("date", date);
+                intent.putExtra("parkingAvailable", parkingAvailable);
+                intent.putExtra("lengthHike", lengthHike);
+                intent.putExtra("difficultyLevel", difficultyLevel);
+                intent.putExtra("description", description);
+
+                // Start the ConfirmationActivity
+                startActivity(intent);
+            }
+        });
 
         return view;
     }
