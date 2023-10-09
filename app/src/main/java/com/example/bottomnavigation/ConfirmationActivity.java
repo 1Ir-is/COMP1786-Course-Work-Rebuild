@@ -6,11 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.bottomnavigation.databinding.ActivityConfirmationBinding;
+
 public class ConfirmationActivity extends AppCompatActivity {
+
+    private ActivityConfirmationBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +60,10 @@ public class ConfirmationActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         // Handle the "Yes" button click (e.g., save to the database)
                         // You can implement the database saving logic here
-                        finish(); // Close the activity
+                        clearInputFields();
                     }
                 })
+
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -66,5 +72,21 @@ public class ConfirmationActivity extends AppCompatActivity {
                     }
                 })
                 .show();
+
+    }
+
+    private void clearInputFields() {
+        // Clear your EditText and other input fields here
+        EditText nameHikeText = findViewById(R.id.nameHikeText);
+        EditText locationText = findViewById(R.id.locationText);
+        EditText dateHikeText = findViewById(R.id.dateHikeText);
+        EditText lengthHikeText = findViewById(R.id.lengthHikeText);
+        EditText descriptionHikeText = findViewById(R.id.descriptionHikeText);
+
+        nameHikeText.setText("");
+        locationText.setText("");
+        dateHikeText.setText("");
+        lengthHikeText.setText("");
+        descriptionHikeText.setText("");
     }
 }

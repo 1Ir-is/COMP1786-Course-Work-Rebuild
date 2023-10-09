@@ -195,14 +195,10 @@ public class AddFragment extends Fragment {
                 if (month == 2) {
                     if (isLeapYear && (day >= 1 && day <= 29)) {
                         return true; // Valid leap year date
-                    } else if (!isLeapYear && (day >= 1 && day <= 28)) {
-                        return true; // Valid non-leap year date
-                    }
+                    } else return !isLeapYear && (day >= 1 && day <= 28); // Valid non-leap year date
                 } else if ((month == 4 || month == 6 || month == 9 || month == 11) && (day >= 1 && day <= 30)) {
                     return true; // Valid 30-day month date
-                } else if ((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) && (day >= 1 && day <= 31)) {
-                    return true; // Valid 31-day month date
-                }
+                } else return (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) && (day >= 1 && day <= 31); // Valid 31-day month date
             }
         }
         return false; // Invalid date of birth
