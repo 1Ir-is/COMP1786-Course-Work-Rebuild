@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">BottomNavigation</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">HikerApp</string>
+    <string-array name="difficultyLevelHiking">
+        <item>Easiest</item>
+        <item>Moderate</item>
+        <item>Moderately Strenuous </item>
+        <item>Strenuous </item>
+        <item>Very Strenuous </item>
+    </string-array>
 </resources>
