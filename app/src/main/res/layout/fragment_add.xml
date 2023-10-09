@@ -306,13 +306,13 @@
 
 
         <Button
-            android:id="@+id/textButton"
+            android:id="@+id/addButton"
             android:layout_width="wrap_content"
             android:layout_height="55dp"
             android:layout_marginTop="10dp"
             android:text="ADD"
             android:textSize="20sp"
-            android:backgroundTint="@color/teal_200"/>
+            android:backgroundTint="?attr/colorSecondaryVariant"/>
 
     </TableLayout>
 </LinearLayout>
