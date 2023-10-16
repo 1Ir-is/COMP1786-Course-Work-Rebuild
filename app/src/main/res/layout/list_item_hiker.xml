@@ -1,0 +1,28 @@
+<!-- res/layout/list_item_hiker.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Display the hiker's name -->
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hiker's Name"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Display the hiker's location -->
+    <TextView
+        android:id="@+id/textViewLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location"
+        android:textSize="16sp" />
+
+    <!-- Add more TextView elements for other hiker details (e.g., date, length, etc.) -->
+
+</LinearLayout>

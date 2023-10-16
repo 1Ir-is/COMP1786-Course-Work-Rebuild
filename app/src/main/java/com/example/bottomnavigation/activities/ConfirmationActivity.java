@@ -1,4 +1,4 @@
-package com.example.bottomnavigation;
+package com.example.bottomnavigation.activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.bottomnavigation.R;
 import com.example.bottomnavigation.databinding.ActivityConfirmationBinding;
 
 public class ConfirmationActivity extends AppCompatActivity {

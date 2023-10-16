@@ -1,4 +1,4 @@
-package com.example.bottomnavigation;
+package com.example.bottomnavigation.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -7,7 +7,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
+import com.example.bottomnavigation.R;
 import com.example.bottomnavigation.databinding.ActivityMainBinding;
+import com.example.bottomnavigation.fragment.AddFragment;
+import com.example.bottomnavigation.fragment.HomeFragment;
+import com.example.bottomnavigation.fragment.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
 
