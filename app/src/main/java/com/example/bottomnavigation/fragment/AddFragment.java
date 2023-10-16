@@ -146,18 +146,20 @@ public class AddFragment extends Fragment {
                 } else if (description.isEmpty()) {
                     showValidationError("Please fill in all fields!");
                 } else {
-                    // Insert data into the database
-                    long newRowId = insertDataIntoDatabase(name, location, date, parkingAvailable, lengthHike, difficultyLevel, description);
+                    // Create an intent to start the ConfirmationActivity
+                    Intent intent = new Intent(getActivity(), ConfirmationActivity.class);
 
-                    if (newRowId != -1) {
-                        // Data inserted successfully
-                        // Optionally, you can clear input fields or display a success message
-                        Toast.makeText(getActivity(), "Data saved successfully!", Toast.LENGTH_SHORT).show();
-                    } else {
-                        // Handle insertion failure
-                        // Optionally, you can display an error message
-                        Toast.makeText(getActivity(), "Failed to save data.", Toast.LENGTH_SHORT).show();
-                    }
+                    // Pass user-input data as extras to the intent
+                    intent.putExtra("name", name);
+                    intent.putExtra("location", location);
+                    intent.putExtra("date", date);
+                    intent.putExtra("parkingAvailable", parkingAvailable);
+                    intent.putExtra("lengthHike", lengthHike);
+                    intent.putExtra("difficultyLevel", difficultyLevel);
+                    intent.putExtra("description", description);
+
+                    // Start the ConfirmationActivity
+                    startActivity(intent);
                 }
             }
         });
@@ -165,26 +167,6 @@ public class AddFragment extends Fragment {
         return view;
     }
 
-    // Helper method to insert data into the database
-    private long insertDataIntoDatabase(String name, String location, String date, String parkingAvailable, String lengthHike, String difficultyLevel, String description) {
-        DatabaseHelper dbHelper = new DatabaseHelper(getActivity());
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(DatabaseHelper.COLUMN_NAME, name);
-        values.put(DatabaseHelper.COLUMN_LOCATION, location);
-        values.put(DatabaseHelper.COLUMN_DATE, date);
-        values.put(DatabaseHelper.COLUMN_PARKING_AVAILABLE, parkingAvailable);
-        values.put(DatabaseHelper.COLUMN_LENGTH_HIKE, lengthHike);
-        values.put(DatabaseHelper.COLUMN_DIFFICULTY_LEVEL, difficultyLevel);
-        values.put(DatabaseHelper.COLUMN_DESCRIPTION, description);
-
-        long newRowId = db.insert(DatabaseHelper.TABLE_NAME, null, values);
-
-        db.close();
-
-        return newRowId;
-    }
     // Helper method to show validation error
     private void showValidationError(String errorMessage) {
         new AlertDialog.Builder(getActivity())
